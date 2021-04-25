@@ -40,7 +40,7 @@ class PostgresManagement:
             +" password="+ creds.PGPASSWORD
         conn=psycopg2.connect(conn_string)
         self.connection = conn
-        self.cursor = conn.cursor()
+        #self.cursor = conn.cursor()
         self.schema = 'public'
     
     def findUsers(self):
