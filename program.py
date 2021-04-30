@@ -8,6 +8,7 @@ postgres = PostgresManagement()
 @app.route('/')
 def index():
     user = postgres.findUsers()
+    user = user.loc[0,'name':'surname']
     return render_template('index.html', name=user)
 
 
