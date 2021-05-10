@@ -1465,14 +1465,14 @@ pre code {
 
     .col-xl-6 {
         -ms-flex: 0 0 50%;
-        flex: 0 0 50%;
-        max-width: 50%
+        flex: 0 0 98%;
+        max-width: 98%
     }
 
     .col-xl-7 {
         -ms-flex: 0 0 58.333333%;
-        flex: 0 0 58.333333%;
-        max-width: 58.333333%
+        flex: 0 0 98.333333%;
+        max-width: 98.333333%
     }
 
     .col-xl-8 {
