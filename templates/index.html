@@ -52,7 +52,7 @@
  <!-- sidebar part here -->
  <nav class="sidebar">
     <div class="logo d-flex justify-content-between">
-        <a href="index.html"><img src="{{ url_for('static', filename='images/logo.png')}}" alt=""></a>
+        <a href="/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt=""></a>
         <div class="sidebar_close_icon d-lg-none">
             <i class="ti-close"></i>
         </div>
@@ -65,6 +65,7 @@
           <a class="has-arrow" href="#" aria-expanded="false">
           <!-- <i class="fas fa-th"></i> -->
           <img src="{{ url_for('static', filename='images/1.svg')}}" alt="">
+          
             <span>Dashboard</span>
           </a>
         </li>
@@ -73,7 +74,7 @@
           </li>
         <li class="">
           <a class="has-arrow" href="#" aria-expanded="false">
-            <img src="img/menu-icon/2.svg" alt="">
+            <img src="{{ url_for('static', filename='images/2.svg')}}" alt="">
             <span>Pages</span>
           </a>
           <ul class="mm-collapse">
