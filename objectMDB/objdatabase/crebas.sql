@@ -1,14 +1,8 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 8                                  */
-/* Date de création :  04/24/21 6:19:43 PM                      */
+/* Date de création :  05/19/21 11:04:46 AM                     */
 /*==============================================================*/
 
-
-drop index PERSON_ADRESSE_FK;
-
-drop index ADRESSE_PK;
-
-drop table ADRESSE;
 
 drop index CAHSIER_REGISTER2_FK;
 
@@ -93,33 +87,6 @@ drop index REGISTER_PHARMACY_FK;
 drop index REGISTER_PHARMACY_PK;
 
 drop table REGISTER_PHARMACY;
-
-/*==============================================================*/
-/* Table : ADRESSE                                              */
-/*==============================================================*/
-create table ADRESSE (
-   ID_ADRESSE           INT4                 not null,
-   ID_PERSON            INT4                 not null,
-   PHONE                VARCHAR(1024)        null,
-   POBOX                VARCHAR(1024)        null,
-   EMAIL                VARCHAR(1024)        null,
-   HOME                 VARCHAR(1024)        null,
-   constraint PK_ADRESSE primary key (ID_ADRESSE)
-);
-
-/*==============================================================*/
-/* Index : ADRESSE_PK                                           */
-/*==============================================================*/
-create unique index ADRESSE_PK on ADRESSE (
-ID_ADRESSE
-);
-
-/*==============================================================*/
-/* Index : PERSON_ADRESSE_FK                                    */
-/*==============================================================*/
-create  index PERSON_ADRESSE_FK on ADRESSE (
-ID_PERSON
-);
 
 /*==============================================================*/
 /* Table : CAHSIER_REGISTER                                     */
@@ -295,6 +262,9 @@ ID_PATIENT
 create table PATIENTBOOK (
    ID_PATIENTBOOK       INT4                 not null,
    LOCATION             VARCHAR(1024)        null,
+   DESCRIPTION          VARCHAR(8000)        null,
+   DATE                 DATE                 null,
+   RESULTATS            VARCHAR(8000)        null,
    constraint PK_PATIENTBOOK primary key (ID_PATIENTBOOK)
 );
 
@@ -312,8 +282,11 @@ create table PERSON (
    ID_PERSON            INT4                 not null,
    NAME                 VARCHAR(1024)        null,
    SURNAME              VARCHAR(1024)        null,
-   ADRESSE              INT4                 null,
    TYPE                 CHAR(256)            null,
+   PHONE                VARCHAR(1024)        null,
+   POBOX                VARCHAR(1024)        null,
+   EMAIL                VARCHAR(1024)        null,
+   HOME                 VARCHAR(1024)        null,
    constraint PK_PERSON primary key (ID_PERSON)
 );
 
@@ -465,11 +438,6 @@ ID_PRODUCT
 create  index REGISTER_PHARMACY2_FK on REGISTER_PHARMACY (
 ID_TRANSACTION
 );
-
-alter table ADRESSE
-   add constraint FK_ADRESSE_PERSON_AD_PERSON foreign key (ID_PERSON)
-      references PERSON (ID_PERSON)
-      on delete restrict on update restrict;
 
 alter table CAHSIER_REGISTER
    add constraint FK_CAHSIER__CAHSIER_R_CASHIER foreign key (ID_CASHIER)

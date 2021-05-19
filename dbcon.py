@@ -44,7 +44,7 @@ class PostgresManagement:
         self.schema = 'public'
     
     def findUsers(self):
-        sql_command = sql_command = "SELECT * FROM {}.{};".format(str(self.schema), 'person')
+        sql_command = "SELECT * FROM public.{};".format('person')
         print (sql_command)
         data = pd.read_sql(sql_command, self.connection)
         return (data)
