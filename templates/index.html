@@ -1,90 +1,8 @@
-<!DOCTYPE html>
-<html lang="zxx">
+{%extends "layout.html"%} {%block content%}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Hospital</title>
-
-    <!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
-    <!-- Bootstrap CSS -->
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
-    <!-- themefy CSS -->
-    <link href="{{ url_for('static', filename='css/themify-icons.css')}}" rel="stylesheet">
-    <!-- swiper slider CSS -->
-    <link href="{{ url_for('static', filename='css/swiper.min.css')}}" rel="stylesheet">
-    <!-- select2 CSS -->
-    <link href="{{ url_for('static', filename='css/nice-select.css')}}" rel="stylesheet">
-    <!-- select2 CSS -->
-    <link href="{{ url_for('static', filename='css/select2.min.css')}}" rel="stylesheet">
-    <!-- owl carousel CSS -->
-    <link href="{{ url_for('static', filename='css/owl.carousel.css')}}" rel="stylesheet">
-    <!-- gijgo css -->
-    <link href="{{ url_for('static', filename='css/gijgo.min.css')}}" rel="stylesheet">
-    <!-- font awesome CSS -->
-    <link href="{{ url_for('static', filename='css/all.min.css')}}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/tagsinput.css')}}" rel="stylesheet">
-    <!-- datatable CSS -->
-    <link href="{{ url_for('static', filename='css/jquery.dataTables.min.css')}}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/responsive.dataTables.min.css')}}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/buttons.dataTables.min.css')}}" rel="stylesheet">
-    <!-- text editor css -->
-    <link href="{{ url_for('static', filename='css/summernote-bs4.css')}}" rel="stylesheet">
-    <!-- morris css -->
-    <link href="{{ url_for('static', filename='css/morris.css')}}" rel="stylesheet">
-    <!-- metarial icon css -->
-    <link href="{{ url_for('static', filename='css/material-icons.css')}}" rel="stylesheet">
-
-    <!-- menu css  -->
-    <link href="{{ url_for('static', filename='css/metisMenu.css')}}" rel="stylesheet">
-    <!-- style CSS -->
-    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/default.css')}}" rel="stylesheet">
-</head>
 <body class="crm_body_bg">
-    
-
-
 <!-- main content part here -->
  
- <!-- sidebar  -->
- <!-- sidebar part here -->
- <nav class="sidebar">
-    <div class="logo d-flex justify-content-between">
-        <a href="/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt=""></a>
-        <div class="sidebar_close_icon d-lg-none">
-            <i class="ti-close"></i>
-        </div>
-    </div>
-    <ul id="sidebar_menu" class="metismenu">
-        <li class="side_menu_title">
-            <span>Dashboard</span>
-          </li>
-        <li class="">
-          <a class="has-arrow" href="#" aria-expanded="false">
-          <!-- <i class="fas fa-th"></i> -->
-          <img src="{{ url_for('static', filename='images/1.svg')}}" alt="">
-          
-            <span>Dashboard</span>
-          </a>
-        </li>
-        <li class="side_menu_title">
-            <span>Applications</span>
-          </li>
-        <li class="">
-          <a class="has-arrow" href="#" aria-expanded="false">
-            <img src="{{ url_for('static', filename='images/2.svg')}}" alt="">
-            <span>Pages</span>
-          </a>
-        </li>
-      </ul>
-    
-  </nav>
-<!-- sidebar part end -->
- <!--/ sidebar  -->
-
-
 <section class="main_content dashboard_part">
         <!-- menu  -->
     <div class="container-fluid no-gutters">
@@ -109,9 +27,6 @@
                             <li>
                                 <a href="#"> <img src="{{ url_for('static', filename='images/bell.svg')}}" alt=""> </a>
                             </li>
-                            <li>
-                                <a href="#"> <img src="{{ url_for('static', filename='images/msg.svg')}}" alt=""> </a>
-                            </li>
                         </div>
                         <div class="profile_info">
                             <img src="{{ url_for('static', filename='images/client_img.png')}}" alt="#">
@@ -119,9 +34,9 @@
                                 <p>Neurologist </p>
                                 <h5>Dr. Robar Smith</h5>
                                 <div class="profile_info_details">
-                                    <a href="#">My Profile <i class="ti-user"></i></a>
-                                    <a href="#">Settings <i class="ti-settings"></i></a>
-                                    <a href="#">Log Out <i class="ti-shift-left"></i></a>
+                                    <a href="profile">My Profile <i class="ti-user"></i></a>
+                                    <a href="settings">Settings <i class="ti-settings"></i></a>
+                                    <a href="login">Log Out <i class="ti-shift-left"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -235,6 +150,10 @@
                                             <button type="submit"> <i class="ti-search"></i> </button>
                                         </form>
                                     </div>
+                                </div>
+                                <div class="add_button ml-10">
+                                    <a href="#" data-toggle="modal" data-target="#addpatient" class="btn_1">Add New</a>
+                                    <!--{%include 'forms/new_patient.html'%}-->
                                 </div>
                             </div>
                         </div>
@@ -508,53 +427,7 @@
 <!-- main content part end -->
 
 <!-- footer  -->
-<!-- jquery slim -->
-<script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
-<!-- popper js -->
-<script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
-<!-- bootstarp js -->
-<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
-<!-- sidebar menu  -->
-<script src="{{ url_for('static', filename='js/metisMenu.js')}}"></script>
-<!-- waypoints js -->
-<script src="{{ url_for('static', filename='js/jquery.waypoints.min.js')}}"></script>
-<!-- waypoints js -->
-<script src="{{ url_for('static', filename='js/Chart.min.js')}}"></script>
-<!-- counterup js -->
-<script src="{{ url_for('static', filename='js/jquery.counterup.min.js')}}"></script>
-<!-- swiper slider js -->
-<script src="{{ url_for('static', filename='js/swiper.min.js')}}"></script>
-<!-- nice select -->
-<script src="{{ url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
-<!-- owl carousel -->
-<script src="{{ url_for('static', filename='js/owl.carousel.min.js')}}"></script>
-<!-- gijgo css -->
-<script src="{{ url_for('static', filename='js/gijgo.min.js')}}"></script>
-<!-- responsive table -->
-<script src="{{ url_for('static', filename='js/jquery.dataTables.min.js')}}"></script>
-<script src="{{ url_for('static', filename='js/dataTables.responsive.min.js')}}"></script>
-<script src="{{ url_for('static', filename='js/dataTables.buttons.min.js')}}"></script>
-<script src="{{ url_for('static', filename='js/buttons.flash.min.js')}}"></script>
-<script src="{{ url_for('static', filename='js/jszip.min.js')}}"></script>
-<script src="{{ url_for('static', filename='js/pdfmake.min.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vfs_fonts.js')}}"></script>
-<script src="{{ url_for('static', filename='js/buttons.html5.min.js')}}"></script>
-<script src="{{ url_for('static', filename='js/buttons.print.min.js')}}"></script>
 
-<script src="{{ url_for('static', filename='js/chart.min.js')}}"></script>
-<!-- progressbar js -->
-<script src="{{ url_for('static', filename='js/jquery.barfiller.js')}}"></script>
-<!-- tag input -->
-<script src="{{ url_for('static', filename='js/tagsinput.js')}}"></script>
-<!-- text editor js -->
-<script src="{{ url_for('static', filename='js/summernote-bs4.js')}}"></script>
-
-<script src="{{ url_for('static', filename='js/apexcharts.js')}}"></script>
-
-<!-- custom js -->
-<script src="{{ url_for('static', filename='js/custom.js')}}"></script>
-<script src="{{ url_for('static', filename='js/bar_active_1.js')}}"></script>
-<script src="{{ url_for('static', filename='js/apex_chart_list.js')}}"></script>
 </body>
-</html>
->>>>>>> 830a836878b8b38c0916640c97436e1ea304b349
+
+{%endblock content%}

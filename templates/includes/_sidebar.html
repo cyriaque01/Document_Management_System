@@ -1,0 +1,35 @@
+ <!-- sidebar  -->
+ <!-- sidebar part here -->
+ <nav class="sidebar">
+    <div class="logo d-flex justify-content-between">
+        <a href="/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt=""></a>
+        <div class="sidebar_close_icon d-lg-none">
+            <i class="ti-close"></i>
+        </div>
+    </div>
+    <ul id="sidebar_menu" class="metismenu">
+        <li class="side_menu_title">
+            <span>Dashboard</span>
+          </li>
+        <li class="">
+          <a class="has-arrow" href="#" aria-expanded="false">
+          <!-- <i class="fas fa-th"></i> -->
+          <img src="{{ url_for('static', filename='images/1.svg')}}" alt="">
+          
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="side_menu_title">
+            <span>Applications</span>
+          </li>
+        <li class="">
+          <a class="has-arrow" href="#" aria-expanded="false">
+            <img src="{{ url_for('static', filename='images/2.svg')}}" alt="">
+            <span>Pages</span>
+          </a>
+        </li>
+      </ul>
+    
+  </nav>
+<!-- sidebar part end -->
+ <!--/ sidebar  -->
