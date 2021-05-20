@@ -1,13 +1,16 @@
+
 {%extends "layout.html"%} {%block content%}
+
 <!--/ menu  -->
 <div class="QA_table ">
     <!-- table-responsive -->
     <table class="table lms_table_active2">
         <thead>
             <tr>
-                <th scope="col">Type</th>
+                
                 <th scope="col">Name</th>
                 <th scope="col">Surname</th>
+                <th scope="col">Type</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone Number</th>
                 <th scope="col">Address</th>
@@ -22,11 +25,11 @@
                         <div class="student_list_img mr_20">
                             <img src="{{ url_for('static', filename='images/pataint.png')}}" alt="" srcset="">
                         </div>
-                        <p>Jhon Kural</p>
+                        <p>{{person.name[j]}}</p>
                     </div>
                 </th>
-                <td>{{person.name[j]}}</td>
                 <td>{{person.surname[j]}}</td>
+                <td>{{person.type[j]}}</td>
                 <td>{{person.email[j]}}</td>
                 <td>{{person.phone[j]}}</td>
                 <td>{{person.home[j]}}</td>

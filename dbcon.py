@@ -49,9 +49,15 @@ class PostgresManagement:
         #print (sql_command)
         data = pd.read_sql(sql_command, self.connection)
         return (data)
+    
+    def findPatients(self):
+        sql_command = "SELECT * FROM public.{};".format('patient')
+        #print (sql_command)
+        data = pd.read_sql(sql_command, self.connection)
+        return (data) 
 
 
 if __name__ == "__main__":
     postgresDB = PostgresManagement()
-    res = postgresDB.findUsers()
-    print(res.name[1])
+    res = postgresDB.findPatients()
+    print(res)

@@ -46,56 +46,60 @@
 <body class="crm_body_bg">
     <div>
         {% include 'includes/_sidebar.html'%}
-        {% block content %} {% endblock%}     
+
+        <section class="main_content dashboard_part">
+            {% include 'includes/_navbar.html'%}
+            {% block content %}{% endblock%}
+        </section>
     </div>
 
     <!-- jquery slim -->
-<script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
-        <!-- popper js -->
-        <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
-        <!-- bootstarp js -->
-        <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
-        <!-- sidebar menu  -->
-        <script src="{{ url_for('static', filename='js/metisMenu.js')}}"></script>
-        <!-- waypoints js -->
-        <script src="{{ url_for('static', filename='js/jquery.waypoints.min.js')}}"></script>
-        <!-- waypoints js -->
-        <script src="{{ url_for('static', filename='js/Chart.min.js')}}"></script>
-        <!-- counterup js -->
-        <script src="{{ url_for('static', filename='js/jquery.counterup.min.js')}}"></script>
-        <!-- swiper slider js -->
-        <script src="{{ url_for('static', filename='js/swiper.min.js')}}"></script>
-        <!-- nice select -->
-        <script src="{{ url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
-        <!-- owl carousel -->
-        <script src="{{ url_for('static', filename='js/owl.carousel.min.js')}}"></script>
-        <!-- gijgo css -->
-        <script src="{{ url_for('static', filename='js/gijgo.min.js')}}"></script>
-        <!-- responsive table -->
-        <script src="{{ url_for('static', filename='js/jquery.dataTables.min.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/dataTables.responsive.min.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/dataTables.buttons.min.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/buttons.flash.min.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/jszip.min.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/pdfmake.min.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/vfs_fonts.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/buttons.html5.min.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/buttons.print.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+    <!-- popper js -->
+    <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+    <!-- bootstarp js -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <!-- sidebar menu  -->
+    <script src="{{ url_for('static', filename='js/metisMenu.js')}}"></script>
+    <!-- waypoints js -->
+    <script src="{{ url_for('static', filename='js/jquery.waypoints.min.js')}}"></script>
+    <!-- waypoints js -->
+    <script src="{{ url_for('static', filename='js/Chart.min.js')}}"></script>
+    <!-- counterup js -->
+    <script src="{{ url_for('static', filename='js/jquery.counterup.min.js')}}"></script>
+    <!-- swiper slider js -->
+    <script src="{{ url_for('static', filename='js/swiper.min.js')}}"></script>
+    <!-- nice select -->
+    <script src="{{ url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
+    <!-- owl carousel -->
+    <script src="{{ url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+    <!-- gijgo css -->
+    <script src="{{ url_for('static', filename='js/gijgo.min.js')}}"></script>
+    <!-- responsive table -->
+    <script src="{{ url_for('static', filename='js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/buttons.flash.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jszip.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/pdfmake.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/vfs_fonts.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/buttons.html5.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/buttons.print.min.js')}}"></script>
 
-        <script src="{{ url_for('static', filename='js/chart.min.js')}}"></script>
-        <!-- progressbar js -->
-        <script src="{{ url_for('static', filename='js/jquery.barfiller.js')}}"></script>
-        <!-- tag input -->
-        <script src="{{ url_for('static', filename='js/tagsinput.js')}}"></script>
-        <!-- text editor js -->
-        <script src="{{ url_for('static', filename='js/summernote-bs4.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/chart.min.js')}}"></script>
+    <!-- progressbar js -->
+    <script src="{{ url_for('static', filename='js/jquery.barfiller.js')}}"></script>
+    <!-- tag input -->
+    <script src="{{ url_for('static', filename='js/tagsinput.js')}}"></script>
+    <!-- text editor js -->
+    <script src="{{ url_for('static', filename='js/summernote-bs4.js')}}"></script>
 
-        <script src="{{ url_for('static', filename='js/apexcharts.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/apexcharts.js')}}"></script>
 
-        <!-- custom js -->
-        <script src="{{ url_for('static', filename='js/custom.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/bar_active_1.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/apex_chart_list.js')}}"></script>
+    <!-- custom js -->
+    <script src="{{ url_for('static', filename='js/custom.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bar_active_1.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/apex_chart_list.js')}}"></script>
 </body>
 
 </html>

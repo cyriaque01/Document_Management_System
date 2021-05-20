@@ -19,6 +19,11 @@ def people():
     person = postgres.findUsers()
     return render_template('pages/people.html', person=person)
 
+@app.route('/patients')
+def people():
+    patient = postgres.findUsers()
+    return render_template('pages/patients.html', patient=patient)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

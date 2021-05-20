@@ -1,212 +1,58 @@
+{%extends "layout.html"%} {%block content%}
+
+<!--/ menu  -->
 <div class="QA_table ">
     <!-- table-responsive -->
     <table class="table lms_table_active2">
         <thead>
             <tr>
-                <th scope="col">Patients Name</th>
-                <th scope="col">department</th>
-                <th scope="col">Intern Date</th>
-                <th scope="col">Serial Number</th>
-                <th scope="col">Amount</th>
+                
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Check-in</th>
+                <th scope="col">Room No</th>
+                <th scope="col">Check-out</th>
+                <th scope="col">Description</th>
+                <th scope="col">Book</th>
             </tr>
         </thead>
         <tbody>
+            {% for j in range(patient|length) %}
             <tr>
                 <th scope="row">
                     <div class="patient_thumb d-flex align-items-center">
                         <div class="student_list_img mr_20">
                             <img src="{{ url_for('static', filename='images/pataint.png')}}" alt="" srcset="">
                         </div>
-                        <p>Jhon Kural</p>
+                        <p>{{patient.name[j]}}</p>
                     </div>
                 </th>
-                <td>Monte Carlo</td>
-                <td>11/03/2020</td>
-                <td>MDC65454</td>
+                <td>{{patient.surname[j]}}</td>
+                <td>{{patient.date[j]}}</td>
+                <td>{{patient.roomnumber[j]}}</td>
+                <td>{{patient.checkout[j]}}</td>
+                <td>{{patient.diagnosis[j]}}</td>
+
                 <td>
                     <div class="amoutn_action d-flex align-items-center">
-                        $29,192
+                        <a href="#" class="status_btn">Active</a>
                         <div class="dropdown ml-4">
-                            <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
-                          
+
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item" href="#">View</a>
-                              <a class="dropdown-item" href="#">Edit</a>
-                              <a class="dropdown-item" href="#">Delete</a>
+                                <a class="dropdown-item" href="#">View</a>
+                                <a class="dropdown-item" href="#">Edit</a>
+                                <a class="dropdown-item" href="#">Delete</a>
                             </div>
-                          </div>
-                    </div> </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    <div class="patient_thumb d-flex align-items-center">
-                        <div class="student_list_img mr_20">
-                            <img src="{{ url_for('static', filename='images/2.png')}}" alt="" srcset="">
                         </div>
-                        <p>Jhon Kural</p>
                     </div>
-                </th>
-                <td>Monte Carlo</td>
-                <td>11/03/2020</td>
-                <td>MDC65454</td>
-                <td>
-                    <div class="amoutn_action d-flex align-items-center">
-                        $29,192
-                        <div class="dropdown ml-4">
-                            <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                          
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item" href="#">View</a>
-                              <a class="dropdown-item" href="#">Edit</a>
-                              <a class="dropdown-item" href="#">Delete</a>
-                            </div>
-                          </div>
-                    </div> </td>
+                </td>
             </tr>
-            <tr>
-                <th scope="row">
-                    <div class="patient_thumb d-flex align-items-center">
-                        <div class="student_list_img mr_20">
-                            <img src="{{ url_for('static', filename='images/3.png')}}" alt="" srcset="">
-                        </div>
-                        <p>Jhon Kural</p>
-                    </div>
-                </th>
-                <td>Monte Carlo</td>
-                <td>11/03/2020</td>
-                <td>MDC65454</td>
-                <td>
-                    <div class="amoutn_action d-flex align-items-center">
-                        $29,192
-                        <div class="dropdown ml-4">
-                            <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                          
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item" href="#">View</a>
-                              <a class="dropdown-item" href="#">Edit</a>
-                              <a class="dropdown-item" href="#">Delete</a>
-                            </div>
-                          </div>
-                    </div> </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    <div class="patient_thumb d-flex align-items-center">
-                        <div class="student_list_img mr_20">
-                            <img src="{{ url_for('static', filename='images/4.png')}}" alt="" srcset="">
-                        </div>
-                        <p>Jhon Kural</p>
-                    </div>
-                </th>
-                <td>Monte Carlo</td>
-                <td>11/03/2020</td>
-                <td>MDC65454</td>
-                <td>
-                    <div class="amoutn_action d-flex align-items-center">
-                        $29,192
-                        <div class="dropdown ml-4">
-                            <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                          
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item" href="#">View</a>
-                              <a class="dropdown-item" href="#">Edit</a>
-                              <a class="dropdown-item" href="#">Delete</a>
-                            </div>
-                          </div>
-                    </div> </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    <div class="patient_thumb d-flex align-items-center">
-                        <div class="student_list_img mr_20">
-                            <img src="{{ url_for('static', filename='images/5.png')}}" alt="" srcset="">
-                        </div>
-                        <p>Jhon Kural</p>
-                    </div>
-                </th>
-                <td>Monte Carlo</td>
-                <td>11/03/2020</td>
-                <td>MDC65454</td>
-                <td>
-                    <div class="amoutn_action d-flex align-items-center">
-                        $29,192
-                        <div class="dropdown ml-4">
-                            <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                          
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item" href="#">View</a>
-                              <a class="dropdown-item" href="#">Edit</a>
-                              <a class="dropdown-item" href="#">Delete</a>
-                            </div>
-                          </div>
-                    </div> </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    <div class="patient_thumb d-flex align-items-center">
-                        <div class="student_list_img mr_20">
-                            <img src="{{ url_for('static', filename='images/6.png')}}" alt="" srcset="">
-                        </div>
-                        <p>Jhon Kural</p>
-                    </div>
-                </th>
-                <td>Monte Carlo</td>
-                <td>11/03/2020</td>
-                <td>MDC65454</td>
-                <td>
-                    <div class="amoutn_action d-flex align-items-center">
-                        $29,192
-                        <div class="dropdown ml-4">
-                            <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                          
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item" href="#">View</a>
-                              <a class="dropdown-item" href="#">Edit</a>
-                              <a class="dropdown-item" href="#">Delete</a>
-                            </div>
-                          </div>
-                    </div> </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    <div class="patient_thumb d-flex align-items-center">
-                        <div class="student_list_img mr_20">
-                            <img src="{{ url_for('static', filename='images/6.png')}}" alt="" srcset="">
-                        </div>
-                        <p>Jhon Kural</p>
-                    </div>
-                </th>
-                <td>Monte Carlo</td>
-                <td>11/03/2020</td>
-                <td>MDC65454</td>
-                <td>
-                    <div class="amoutn_action d-flex align-items-center">
-                        $29,192
-                        <div class="dropdown ml-4">
-                            <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                          
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item" href="#">View</a>
-                              <a class="dropdown-item" href="#">Edit</a>
-                              <a class="dropdown-item" href="#">Delete</a>
-                            </div>
-                          </div>
-                    </div> </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
+{%endblock content%}
