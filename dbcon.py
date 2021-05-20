@@ -2,6 +2,7 @@ import psycopg2
 import sys, os
 import numpy as np
 import pandas as pd
+from werkzeug.utils import find_modules
 import credential__sql as creds
 import pandas.io.sql as psql
 
@@ -45,10 +46,12 @@ class PostgresManagement:
     
     def findUsers(self):
         sql_command = "SELECT * FROM public.{};".format('person')
-        print (sql_command)
+        #print (sql_command)
         data = pd.read_sql(sql_command, self.connection)
         return (data)
 
 
 if __name__ == "__main__":
-    postgrsDB = PostgresManagement()
+    postgresDB = PostgresManagement()
+    res = postgresDB.findUsers()
+    print(res.name[1])

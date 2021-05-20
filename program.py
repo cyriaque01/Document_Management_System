@@ -7,13 +7,17 @@ postgres = PostgresManagement()
 
 @app.route('/')
 def index():
-    #user = postgres.findUsers()
-    #user = user.loc[0,'name':'surname']
+
     return render_template('index.html')
 
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/people')
+def people():
+    person = postgres.findUsers()
+    return render_template('pages/people.html', person=person)
 
 
 if __name__ == '__main__':
