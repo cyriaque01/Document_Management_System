@@ -11,15 +11,22 @@
         <li class="side_menu_title">
             <span>Dashboard</span>
           </li>
-        <li class="">
+        <li class>
           <a class="has-arrow" href="#" aria-expanded="false">
-          <!-- <i class="fas fa-th"></i> -->
           <img src="{{ url_for('static', filename='images/1.svg')}}" alt="">
-          
             <span>Dashboard</span>
           </a>
+          <ul class="mm-collapse"">
+            <li><a class="active" href="doctors">Doctors</a></li> <!-- Active class is the current page. Shows in blue -->
+            <li><a class="active" href="people">People</a></li>
+            <li><a class="active" href="nurses">Nurses</a></li>
+            <li><a class="active" href="patients">patients</a></li>
+            <li><a class="active" href="pharmacy">pharmacy</a></li>
+            <li><a class="active" href="cashier">Cahsier</a></li>
+            <li><a class="active" href="transactions">Transactions</a></li>
+          </ul>
         </li>
-        <li class="side_menu_title">
+        <!-- <li class="side_menu_title">
             <span>Applications</span>
           </li>
         <li class="">
@@ -27,7 +34,7 @@
             <img src="{{ url_for('static', filename='images/2.svg')}}" alt="">
             <span>Pages</span>
           </a>
-        </li>
+        </li>-->
       </ul>
     
   </nav>

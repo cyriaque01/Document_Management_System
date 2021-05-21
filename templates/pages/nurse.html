@@ -7,9 +7,12 @@
         <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <!--<th scope="col">Description</th>-->
-                <th scope="col">Stock</th>
+                <th scope="col">Shift Start</th>
+                <th scope="col">Shift End</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Address</th>
+                <th scope="col">Status</th>
             </tr>
         </thead>
         <tbody>
@@ -17,14 +20,17 @@
             <tr>
                 <td>
                     <div class="patient_thumb d-flex align-items-center">
-                        {{pharmacy.name[j]}}
+                        {{person.name[j]}} {{person.surname[j]}}
                     </div>
                 </td>
-                <td>{{pharmacy.price[j]}}</td>
-                <!--<td>{{pharmacy.Description[j]}}</td>-->
+                <td>{{person.hoursstart[j]}}</td>
+                <td>{{person.hoursend[j]}}</td>
+                <td>{{person.email[j]}}</td>
+                <td>{{person.phone[j]}}</td>
+                <td>{{person.home[j]}}</td>
                 <td>
                     <div class="amoutn_action d-flex align-items-center">
-                        <a href="#" class="status_btn">{{pharmacy.stock}}</a>
+                        <a href="#" class="status_btn">Active</a>
                         <div class="dropdown ml-4">
                             <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

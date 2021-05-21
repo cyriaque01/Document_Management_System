@@ -6,25 +6,31 @@
     <table class="table lms_table_active2">
         <thead>
             <tr>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price</th>
-                <!--<th scope="col">Description</th> To add in DB-->
-                <th scope="col">Stock</th>
+                <th scope="col">Name</th>
+                <th scope="col">Shift Start</th>
+                <th scope="col">Shift End</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Address</th>
+                <th scope="col">Status</th>
             </tr>
         </thead>
         <tbody>
-            {% for j in range(pharmacy|length) %}
+            {% for j in range(person|length) %}
             <tr>
                 <td>
                     <div class="patient_thumb d-flex align-items-center">
-                        {{pharmacy.name[j]}}
+                        {{person.name[j]}} {{person.surname[j]}}
                     </div>
                 </td>
-                <td>{{pharmacy.price[j]}}</td>
-                <!--<td>pharmacy.description</td>-->
+                <td>{{person.hoursstart[j]}}</td>
+                <<td>{{person.hoursend[j]}}</td>
+                <td>{{person.email[j]}}</td>
+                <td>{{person.phone[j]}}</td>
+                <td>{{person.home[j]}}</td>
                 <td>
                     <div class="amoutn_action d-flex align-items-center">
-                        <a href="#" class="status_btn">{{pharmacy.stock[j]}}</a>
+                        <a href="#" class="status_btn">Active</a>
                         <div class="dropdown ml-4">
                             <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

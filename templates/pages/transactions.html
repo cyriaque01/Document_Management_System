@@ -6,25 +6,29 @@
     <table class="table lms_table_active2">
         <thead>
             <tr>
+                <th scope="col">Customer</th>
+                <th scope="col">Cashier</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Price</th>
-                <!--<th scope="col">Description</th> To add in DB-->
-                <th scope="col">Stock</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Date</th>
             </tr>
         </thead>
         <tbody>
-            {% for j in range(pharmacy|length) %}
+            {% for j in range(transaction|length) %}
             <tr>
                 <td>
                     <div class="patient_thumb d-flex align-items-center">
-                        {{pharmacy.name[j]}}
+                        {{transaction.name[j]}} {{transaction.surname[j]}}
                     </div>
                 </td>
-                <td>{{pharmacy.price[j]}}</td>
-                <!--<td>pharmacy.description</td>-->
+                <td>{{transaction.id_cashier[j]}}</td>
+                <td>{{transaction.product[j]}}</td>
+                <td>{{transaction.price[j]}}</td>
+                <td>{{transaction.amount[j]}}</td>
                 <td>
                     <div class="amoutn_action d-flex align-items-center">
-                        <a href="#" class="status_btn">{{pharmacy.stock[j]}}</a>
+                        <a href="#" class="status_btn">{{transaction.date[j]}}</a>
                         <div class="dropdown ml-4">
                             <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,7 +36,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Order</a>
+                                <a class="dropdown-item" href="#">Print</a>
                                 <a class="dropdown-item" href="#">Edit</a>
                                 <a class="dropdown-item" href="#">Delete</a>
                             </div>

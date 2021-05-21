@@ -40,6 +40,18 @@ def pharmacies():
     pharmacy = postgres.findPharmacy()
     return render_template('pages/pharmacy.html', pharmacy=pharmacy)
 
+@app.route('/cashier')
+def cashier():
+    person = postgres.findCashier()
+    return render_template('pages/cashier.html', person=person)
+
+
+@app.route('/transactions')
+def transactions():
+    transaction = postgres.findTransactions()
+    return render_template('pages/transactions.html', transaction=transaction)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

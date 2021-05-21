@@ -77,9 +77,19 @@ class PostgresManagement:
         data = pd.read_sql(sql_command, self.connection)
         return (data)
 
+    def findCashier(self):
+        sql_command = "select *, cashier.id_person as ca from cashier inner join person on cashier.id_person = person.id_person;"
+        data = pd.read_sql(sql_command, self.connection)
+        return (data)
+    
+    def findTransactions(self):
+        sql_command = "select c.id_product,c.id_cashier,c.id_person,amount,date,p.name,p.surname, ph.name as product,ph.price from cashregister as c inner join person as p on c.id_person = p.id_person inner join pharmacy as ph on c.id_product = ph.id_product;"
+        data = pd.read_sql(sql_command, self.connection)
+        return (data)
+
 
 if __name__ == "__main__":
     postgresDB = PostgresManagement()
-    res = postgresDB.findDoctors()
+    res = postgresDB.findCashier()
     #person = postgresDB.findUsers()
     print(res)

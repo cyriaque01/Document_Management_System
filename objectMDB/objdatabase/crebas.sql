@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 8                                  */
-/* Date de cr�ation :  05/21/21 5:06:45 AM                      */
+/* Date de cr�ation :  05/21/21 9:37:30 AM                      */
 /*==============================================================*/
 
 
@@ -48,6 +48,7 @@ create table CASHREGISTER (
       constraint CKC_ID_PERSON_CASHREGI check (ID_PERSON >= 0),
    AMOUNT               DECIMAL(8)           null,
    DATE                 DATE                 null,
+   TOTAL                DECIMAL              null,
    constraint PK_CASHREGISTER primary key (ID_TRANSACTION)
 );
 
@@ -232,6 +233,7 @@ create table PERSON (
    POBOX                VARCHAR(1024)        null,
    EMAIL                VARCHAR(1024)        null,
    HOME                 VARCHAR(1024)        null,
+   PHOTO                VARCHAR(1)           null,
    constraint PK_PERSON primary key (ID_PERSON)
 );
 
