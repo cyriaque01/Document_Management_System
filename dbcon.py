@@ -86,10 +86,24 @@ class PostgresManagement:
         sql_command = "select c.id_product,c.id_cashier,c.id_person,amount,date,p.name,p.surname, ph.name as product,ph.price from cashregister as c inner join person as p on c.id_person = p.id_person inner join pharmacy as ph on c.id_product = ph.id_product;"
         data = pd.read_sql(sql_command, self.connection)
         return (data)
+    def findAllTransactions(self):
+        sql_command = "select * from cashregister;"
+        data = pd.read_sql(sql_command, self.connection)
+        return (data)
+    def findSpecDate(self):
+        sql_command = "select sum(total) as total from cashregister where date < (current_timestamp) and date > (current_timestamp -interval '1 day') "
+        today = pd.read_sql(sql_command, self.connection)
+        sql_command = "select sum(total) as total from cashregister where date < (current_timestamp) and date > (current_timestamp -interval '1 week') "
+        week = pd.read_sql(sql_command, self.connection)
+        sql_command = "select sum(total) as total from cashregister where date < (current_timestamp) and date > (current_timestamp -interval '1 month') "
+        month = pd.read_sql(sql_command, self.connection)
+        sql_command = "select sum(total) as total from cashregister where date < (current_timestamp) and date > (current_timestamp -interval '1 year') "
+        year = pd.read_sql(sql_command, self.connection)
+        return (today,week,month,year)
 
 
 if __name__ == "__main__":
     postgresDB = PostgresManagement()
-    res = postgresDB.findCashier()
+    t,w,m,y = postgresDB.findSpecDate()
     #person = postgresDB.findUsers()
-    print(res)
+    print(y.total)

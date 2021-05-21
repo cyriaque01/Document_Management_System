@@ -9,7 +9,8 @@ postgres = PostgresManagement()
 def index():
     patient = postgres.findPatients()
     count = postgres.findCountAll()
-    return render_template('index.html', patient=patient,count=count)
+    t,w,m,y = postgres.findSpecDate()
+    return render_template('index.html', patient=patient,count=count,t=t,w=w,m=m,y=y)
 
 @app.route('/login')
 def login():
