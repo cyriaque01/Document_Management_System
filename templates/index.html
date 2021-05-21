@@ -2,174 +2,183 @@
 
 
 <!-- main content part here -->
+<!--/ menu  -->
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="single_element">
+                    <div class="quick_activity">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="quick_activity_wrap">
 
-
-    
-    <!--/ menu  -->
-    <div class="main_content_iner ">
-        <div class="container-fluid p-0">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="single_element">
-                        <div class="quick_activity">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="quick_activity_wrap">
+                                    <a href="doctors">
                                         <div class="single_quick_activity d-flex">
                                             <div class="icon">
                                                 <img src="{{ url_for('static', filename='images/man.svg')}}" alt="">
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter">520</span> </h3>
+                                                <h3><span class="counter">{{count.doctor[0]}}</span> </h3>
                                                 <p>Doctors</p>
                                             </div>
                                         </div>
+                                    </a>
+
+                                    <a href="nurses">
                                         <div class="single_quick_activity d-flex">
                                             <div class="icon">
                                                 <img src="{{ url_for('static', filename='images/cap.svg')}}" alt="">
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter">6969</span> </h3>
+                                                <h3><span class="counter">{{count.nurse[0]}}</span> </h3>
                                                 <p>Nurses</p>
                                             </div>
                                         </div>
-                                        <div class="single_quick_activity d-flex">
-                                            <div class="icon">
-                                                <img src="{{ url_for('static', filename='images/wheel.svg')}}" alt="">
-                                            </div>
-                                            <div class="count_content">
-                                                <h3><span class="counter">7510</span> </h3>
-                                                <p>Patients</p>
-                                            </div>
-                                        </div>
-                                        <div class="single_quick_activity d-flex">
-                                            <div class="icon">
-                                                <img src="{{ url_for('static', filename='images/pharma.svg')}}" alt="">
-                                            </div>
-                                            <div class="count_content">
-                                                <h3><span class="counter">2110</span> </h3>
-                                                <p>Pharmacusts</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-xl-12">
-                    <div class="white_box mb_30 ">
-                        <div class="box_header border_bottom_1px  ">
-                            <div class="main-title">
-                                <h3 class="mb_25" >Hospital Survey</h3>
-                            </div>
-                        </div>
-                        <div class="income_servay">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="count_content">
-                                        <h3>$ <span class="counter">305</span> </h3>
-                                        <p>Today's Income</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="count_content">
-                                        <h3>$ <span class="counter">1005</span> </h3>
-                                        <p>This Week's Income</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="count_content">
-                                        <h3>$ <span class="counter">5505</span> </h3>
-                                        <p>This Month's Income</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="count_content">
-                                        <h3>$ <span class="counter">155615</span> </h3>
-                                        <p>This Year's Income</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-7">
-                    <div class="white_box QA_section card_height_100">
-                        <div class="white_box_tittle list_header m-0 align-items-center">
-                            <div class="main-title mb-sm-15">
-                                <h3 class="m-0 nowrap">Patients</h3>
-                            </div>
-                            <div class="box_right d-flex lms_block">
-                                <div class="serach_field-area2">
-                                    <div class="search_inner">
-                                        <form Active="#">
-                                            <div class="search_field">
-                                                <input type="text" placeholder="Search here...">
-                                            </div>
-                                            <button type="submit"> <i class="ti-search"></i> </button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="add_button ml-10">
-                                    <a href="#" data-toggle="modal" data-target="#addpatient" class="btn_1">Add New</a>
-                                    <!--{%include 'forms/new_patient.html'%}-->
-                                </div>
-                            </div>
-                        </div>
+                                    </a>
 
-                        {%include 'pages/patients.html'%}
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="white_box card_height_100">
-                        <div class="box_header border_bottom_1px  ">
-                            <div class="main-title">
-                                <h3 class="mb_25">Recent Activity</h3>
+                                    <a href="patients">
+                                    <div class="single_quick_activity d-flex">
+                                        <div class="icon">
+                                            <img src="{{ url_for('static', filename='images/wheel.svg')}}" alt="">
+                                        </div>
+                                        <div class="count_content">
+                                            <h3><span class="counter">{{count.patient[0]}}</span> </h3>
+                                            <p>Patients</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="pharmacy">
+                                    <div class="single_quick_activity d-flex">
+                                        <div class="icon">
+                                            <img src="{{ url_for('static', filename='images/pharma.svg')}}" alt="">
+                                        </div>
+                                        <div class="count_content">
+                                            <h3><span class="counter">{{count.pharmacy[0]}}</span> </h3>
+                                            <p>Pharmacy</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                
+                                </div>
                             </div>
                         </div>
-                        <div class="Activity_timeline">
-                            <ul>
-                                <li>
-                                    <div class="activity_bell"></div>
-                                    <div class="activity_wrap">
-                                        <h6>5 min ago</h6>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="activity_bell"></div>
-                                    <div class="activity_wrap">
-                                        <h6>5 min ago</h6>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="activity_bell"></div>
-                                    <div class="activity_wrap">
-                                        <h6>5 min ago</h6>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="activity_bell"></div>
-                                    <div class="activity_wrap">
-                                        <h6>5 min ago</h6>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-xl-12">
+                <div class="white_box mb_30 ">
+                    <div class="box_header border_bottom_1px  ">
+                        <div class="main-title">
+                            <h3 class="mb_25">Hospital Survey</h3>
+                        </div>
+                    </div>
+                    <div class="income_servay">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="count_content">
+                                    <h3>$ <span class="counter">305</span> </h3>
+                                    <p>Today's Income</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="count_content">
+                                    <h3>$ <span class="counter">1005</span> </h3>
+                                    <p>This Week's Income</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="count_content">
+                                    <h3>$ <span class="counter">5505</span> </h3>
+                                    <p>This Month's Income</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="count_content">
+                                    <h3>$ <span class="counter">155615</span> </h3>
+                                    <p>This Year's Income</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-               
             </div>
+            <div class="col-xl-7">
+                <div class="white_box QA_section card_height_100">
+                    <div class="white_box_tittle list_header m-0 align-items-center">
+                        <div class="main-title mb-sm-15">
+                            <h3 class="m-0 nowrap">Patients</h3>
+                        </div>
+                        <div class="box_right d-flex lms_block">
+                            <div class="serach_field-area2">
+                                <div class="search_inner">
+                                    <form Active="#">
+                                        <div class="search_field">
+                                            <input type="text" placeholder="Search here...">
+                                        </div>
+                                        <button type="submit"> <i class="ti-search"></i> </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="add_button ml-10">
+                                <a href="#" data-toggle="modal" data-target="#addpatient" class="btn_1">Add New</a>
+                                <!--{%include 'forms/new_patient.html'%}-->
+                            </div>
+                        </div>
+                    </div>
+                    {%include 'includes/_patients.html'%}
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="white_box card_height_100">
+                    <div class="box_header border_bottom_1px  ">
+                        <div class="main-title">
+                            <h3 class="mb_25">Recent Activity</h3>
+                        </div>
+                    </div>
+                    <div class="Activity_timeline">
+                        <ul>
+                            <li>
+                                <div class="activity_bell"></div>
+                                <div class="activity_wrap">
+                                    <h6>5 min ago</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="activity_bell"></div>
+                                <div class="activity_wrap">
+                                    <h6>5 min ago</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="activity_bell"></div>
+                                <div class="activity_wrap">
+                                    <h6>5 min ago</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="activity_bell"></div>
+                                <div class="activity_wrap">
+                                    <h6>5 min ago</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 
 <!-- footer part -->
 

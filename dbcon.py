@@ -45,19 +45,41 @@ class PostgresManagement:
         self.schema = 'public'
     
     def findUsers(self):
-        sql_command = "SELECT * FROM public.{};".format('person')
-        #print (sql_command)
+        sql_command = "SELECT * FROM person;"
+        data = pd.read_sql(sql_command, self.connection)
+        return (data)
+    def findUser(self, person):
+        sql_command = "SELECT * FROM person WHERE id_person = {};".format(person)
         data = pd.read_sql(sql_command, self.connection)
         return (data)
     
     def findPatients(self):
-        sql_command = "SELECT * FROM public.{};".format('patient')
-        #print (sql_command)
+        sql_command = "SELECT *, patient.id_person as pa FROM patient INNER JOIN person on patient.id_person = person.id_person;"
         data = pd.read_sql(sql_command, self.connection)
-        return (data) 
+        return (data)
+    
+    def findDoctors(self):
+        sql_command = "select *, doctor.id_person as pa from doctor inner join person on doctor.id_person = person.id_person;"
+        data = pd.read_sql(sql_command, self.connection)
+        return (data)
+    
+    def findNurse(self):
+        sql_command = "select *, nurse.id_person as pa from nurse inner join person on nurse.id_person = person.id_person;"
+        data = pd.read_sql(sql_command, self.connection)
+        return (data)
+
+    def findPharmacy(self):
+        sql_command = "select * from pharmacy;"
+        data = pd.read_sql(sql_command, self.connection)
+        return (data)
+    def findCountAll(self):
+        sql_command = "SELECT (SELECT COUNT(id_person) FROM person) AS person,(SELECT COUNT(id_doctor) FROM doctor) AS doctor,(SELECT COUNT(id_nurse) FROM nurse) AS nurse,(SELECT COUNT(id_product) FROM pharmacy) AS pharmacy, (SELECT COUNT(id_patient)FROM patient) AS patient;"
+        data = pd.read_sql(sql_command, self.connection)
+        return (data)
 
 
 if __name__ == "__main__":
     postgresDB = PostgresManagement()
-    res = postgresDB.findPatients()
+    res = postgresDB.findDoctors()
+    #person = postgresDB.findUsers()
     print(res)

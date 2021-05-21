@@ -1,75 +1,19 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 8                                  */
-/* Date de création :  05/20/21 9:40:10 PM                      */
+/* Date de crï¿½ation :  05/21/21 5:06:45 AM                      */
 /*==============================================================*/
 
 
-drop index PERSON_CASHIER_FK;
 
-drop index CASHIER_PK;
-
-drop table CASHIER;
-
-drop index REGISTER_PHARMACY_FK;
-
-drop index PERSON_REGISTER_FK;
-
-drop index CAHSIER_REGISTER_FK;
-
-drop index CASHREGISTER_PK;
-
-drop table CASHREGISTER;
-
-drop index PRESON_DOC_FK;
-
-drop index DOCTOR_PK;
-
-drop table DOCTOR;
-
-drop index LOGIN_PERSON_FK;
-
-drop index LOGIN_PK;
-
-drop table LOGIN;
-
-drop index ASSOCIATION_10_FK;
-
-drop index NURSE_PK;
-
-drop table NURSE;
-
-drop index PERSON_PATIENT_FK;
-
-drop index PATIENT_PK;
-
-drop table PATIENT;
-
-drop index PATIENTBOOK_PK;
-
-drop table PATIENTBOOK;
-
-drop index PATIENT_BOOK2_FK;
-
-drop index PATIENT_BOOK_FK;
-
-drop index PATIENT_BOOK_PK;
-
-drop table PATIENT_BOOK;
-
-drop index PERSON_PK;
-
-drop table PERSON;
-
-drop index PHARMACY_PK;
-
-drop table PHARMACY;
 
 /*==============================================================*/
 /* Table : CASHIER                                              */
 /*==============================================================*/
 create table CASHIER (
-   ID_CASHIER           INT4                 not null,
-   ID_PERSON            INT4                 not null,
+   ID_CASHIER           SERIAL               not null
+      constraint CKC_ID_CASHIER_CASHIER check (ID_CASHIER >= 0),
+   ID_PERSON            INT4                 not null
+      constraint CKC_ID_PERSON_CASHIER check (ID_PERSON >= 0),
    PASSWORD             VARCHAR(1024)        not null,
    HOURSSTART           DATE                 null,
    HOURSEND             DATE                 null,
@@ -94,10 +38,14 @@ ID_PERSON
 /* Table : CASHREGISTER                                         */
 /*==============================================================*/
 create table CASHREGISTER (
-   ID_TRANSACTION       INT4                 not null,
-   ID_PRODUCT           INT4                 not null,
-   ID_CASHIER           INT4                 not null,
-   ID_PERSON            INT4                 not null,
+   ID_TRANSACTION       SERIAL               not null
+      constraint CKC_ID_TRANSACTION_CASHREGI check (ID_TRANSACTION >= 0),
+   ID_PRODUCT           INT4                 not null
+      constraint CKC_ID_PRODUCT_CASHREGI check (ID_PRODUCT >= 0),
+   ID_CASHIER           INT4                 not null
+      constraint CKC_ID_CASHIER_CASHREGI check (ID_CASHIER >= 0),
+   ID_PERSON            INT4                 not null
+      constraint CKC_ID_PERSON_CASHREGI check (ID_PERSON >= 0),
    AMOUNT               DECIMAL(8)           null,
    DATE                 DATE                 null,
    constraint PK_CASHREGISTER primary key (ID_TRANSACTION)
@@ -135,8 +83,10 @@ ID_PRODUCT
 /* Table : DOCTOR                                               */
 /*==============================================================*/
 create table DOCTOR (
-   ID_DOCTOR            INT4                 not null,
-   ID_PERSON            INT4                 not null,
+   ID_DOCTOR            SERIAL               not null
+      constraint CKC_ID_DOCTOR_DOCTOR check (ID_DOCTOR >= 0),
+   ID_PERSON            INT4                 not null
+      constraint CKC_ID_PERSON_DOCTOR check (ID_PERSON >= 0),
    SPECIALITY           VARCHAR(1024)        null,
    HOURSSTART           DATE                 null,
    HOURSEND             DATE                 null,
@@ -161,8 +111,10 @@ ID_PERSON
 /* Table : LOGIN                                                */
 /*==============================================================*/
 create table LOGIN (
-   ID_LOGIN             INT4                 not null,
-   ID_PERSON            INT4                 not null,
+   ID_LOGIN             SERIAL               not null
+      constraint CKC_ID_LOGIN_LOGIN check (ID_LOGIN >= 0),
+   ID_PERSON            INT4                 not null
+      constraint CKC_ID_PERSON_LOGIN check (ID_PERSON >= 0),
    USERNAME             VARCHAR(1)           not null,
    PASSWORD             VARCHAR(1024)        not null,
    constraint PK_LOGIN primary key (ID_LOGIN)
@@ -186,8 +138,10 @@ ID_PERSON
 /* Table : NURSE                                                */
 /*==============================================================*/
 create table NURSE (
-   ID_NURSE             INT4                 not null,
-   ID_PERSON            INT4                 not null,
+   ID_NURSE             SERIAL               not null
+      constraint CKC_ID_NURSE_NURSE check (ID_NURSE >= 0),
+   ID_PERSON            INT4                 not null
+      constraint CKC_ID_PERSON_NURSE check (ID_PERSON >= 0),
    HOURSSTART           DATE                 null,
    HOURSEND             DATE                 null,
    constraint PK_NURSE primary key (ID_NURSE)
@@ -211,8 +165,10 @@ ID_PERSON
 /* Table : PATIENT                                              */
 /*==============================================================*/
 create table PATIENT (
-   ID_PATIENT           INT4                 not null,
-   ID_PERSON            INT4                 not null,
+   ID_PATIENT           SERIAL               not null
+      constraint CKC_ID_PATIENT_PATIENT check (ID_PATIENT >= 0),
+   ID_PERSON            INT4                 not null
+      constraint CKC_ID_PERSON_PATIENT check (ID_PERSON >= 0),
    DATE                 DATE                 null,
    ROOMNUMBER           INT4                 null,
    CHECKOUT             DATE                 null,
@@ -238,7 +194,10 @@ ID_PERSON
 /* Table : PATIENTBOOK                                          */
 /*==============================================================*/
 create table PATIENTBOOK (
-   ID_PATIENTBOOK       INT4                 not null,
+   ID_PATIENTBOOK       SERIAL               not null
+      constraint CKC_ID_PATIENTBOOK_PATIENTB check (ID_PATIENTBOOK >= 0),
+   ID_PATIENT           INT4                 not null
+      constraint CKC_ID_PATIENT_PATIENTB check (ID_PATIENT >= 0),
    DEPARTEMENT          VARCHAR(1024)        null,
    DESCRIPTION          VARCHAR(8000)        null,
    DATE                 DATE                 null,
@@ -254,41 +213,18 @@ ID_PATIENTBOOK
 );
 
 /*==============================================================*/
-/* Table : PATIENT_BOOK                                         */
-/*==============================================================*/
-create table PATIENT_BOOK (
-   ID_PATIENT           INT4                 not null,
-   ID_PATIENTBOOK       INT4                 not null,
-   constraint PK_PATIENT_BOOK primary key (ID_PATIENT, ID_PATIENTBOOK)
-);
-
-/*==============================================================*/
-/* Index : PATIENT_BOOK_PK                                      */
-/*==============================================================*/
-create unique index PATIENT_BOOK_PK on PATIENT_BOOK (
-ID_PATIENT,
-ID_PATIENTBOOK
-);
-
-/*==============================================================*/
 /* Index : PATIENT_BOOK_FK                                      */
 /*==============================================================*/
-create  index PATIENT_BOOK_FK on PATIENT_BOOK (
+create  index PATIENT_BOOK_FK on PATIENTBOOK (
 ID_PATIENT
-);
-
-/*==============================================================*/
-/* Index : PATIENT_BOOK2_FK                                     */
-/*==============================================================*/
-create  index PATIENT_BOOK2_FK on PATIENT_BOOK (
-ID_PATIENTBOOK
 );
 
 /*==============================================================*/
 /* Table : PERSON                                               */
 /*==============================================================*/
 create table PERSON (
-   ID_PERSON            INT4                 not null,
+   ID_PERSON            SERIAL               not null
+      constraint CKC_ID_PERSON_PERSON check (ID_PERSON >= 0),
    NAME                 VARCHAR(1024)        null,
    SURNAME              VARCHAR(1024)        null,
    TYPE                 CHAR(256)            null,
@@ -310,7 +246,8 @@ ID_PERSON
 /* Table : PHARMACY                                             */
 /*==============================================================*/
 create table PHARMACY (
-   ID_PRODUCT           INT4                 not null,
+   ID_PRODUCT           SERIAL               not null
+      constraint CKC_ID_PRODUCT_PHARMACY check (ID_PRODUCT >= 0),
    NAME                 VARCHAR(1024)        null,
    PRICE                DECIMAL              null,
    STOCK                INT4                 null,
@@ -364,13 +301,8 @@ alter table PATIENT
       references PERSON (ID_PERSON)
       on delete restrict on update restrict;
 
-alter table PATIENT_BOOK
-   add constraint FK_PATIENT__PATIENT_B_PATIENT foreign key (ID_PATIENT)
+alter table PATIENTBOOK
+   add constraint FK_PATIENTB_PATIENT_B_PATIENT foreign key (ID_PATIENT)
       references PATIENT (ID_PATIENT)
-      on delete restrict on update restrict;
-
-alter table PATIENT_BOOK
-   add constraint FK_PATIENT__PATIENT_B_PATIENTB foreign key (ID_PATIENTBOOK)
-      references PATIENTBOOK (ID_PATIENTBOOK)
       on delete restrict on update restrict;
 

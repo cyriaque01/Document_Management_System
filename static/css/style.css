@@ -3238,7 +3238,7 @@ table.dataTable {
 /* line 463, H:/admin_project/hospital/scss/_header.scss */
 .table td, .table th {
   padding: .75rem;
-  vertical-align: top;
+  vertical-align: middle;
   border-top: 0 !important;
 }
 
