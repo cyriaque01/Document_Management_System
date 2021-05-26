@@ -7,33 +7,6 @@ import credential__sql as creds
 import pandas.io.sql as psql
 
 ## ****** LOAD PSQL DATABASE ***** ##
-
-'''
-# Set up a connection to the postgres server.
-conn_string = "host="+ creds.PGHOST +" port="+ "5432" +" dbname="+ creds.PGDATABASE +" user=" + creds.PGUSER \
-+" password="+ creds.PGPASSWORD
-conn=psycopg2.connect(conn_string)
-print("Connected!")
-
-# Create a cursor object
-cursor = conn.cursor()
-
-
-def load_data(schema, table):
-
-    sql_command = "SELECT * FROM {}.{};".format(str(schema), str(table))
-    print (sql_command)
-
-    # Load the data
-    data = pd.read_sql(sql_command, conn)
-
-    print(data.shape)
-    return (data)
-
-
-#data = load_data('public','person')
-#print(data)
-'''
 class PostgresManagement:
     def __init__(self):
         # Set up a connection to the postgres server.
@@ -41,7 +14,7 @@ class PostgresManagement:
             +" password="+ creds.PGPASSWORD
         conn=psycopg2.connect(conn_string)
         self.connection = conn
-        #self.cursor = conn.cursor()
+        self.cursor = conn.cursor()
         self.schema = 'public'
     
     def findUsers(self):
@@ -100,6 +73,54 @@ class PostgresManagement:
         sql_command = "select sum(total) as total from cashregister where date < (current_timestamp) and date > (current_timestamp -interval '1 year') "
         year = pd.read_sql(sql_command, self.connection)
         return (today,week,month,year)
+
+    def addPerson(self, person):
+        sql_command = 'insert into person (name,surname,type,phone,pobox,email,home) values {}'.format(person)
+        print(sql_command) 
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('inserted')
+        except:
+            self.connection.rollback()
+            print('error')
+    
+    def addDoctor(self,doctor):
+        sql_command = 'insert into doctor (id_person,speciality,hoursstart,hoursend) values {}'.format(doctor)
+        print(sql_command)
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('inserted')
+        except:
+            self.connection.rollback()
+            print('error')
+
+    def addNurse(self,nurse):
+        sql_command = 'insert into nurse (id_person,hoursstart,hoursend) values {}'.format(nurse)
+        print(sql_command)
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('inserted')
+        except:
+            self.connection.rollback()
+            print('error')
+
+    
+    def addCashier(self,cashier):
+        sql_command = 'insert into cashier (id_person,password,hoursstart,hoursend) values {}'.format(cashier)
+        print(sql_command)
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('inserted')
+        except:
+            self.connection.rollback()
+            print('error')
+
+        
+        
 
 
 if __name__ == "__main__":

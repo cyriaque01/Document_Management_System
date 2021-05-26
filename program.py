@@ -1,9 +1,11 @@
 from flask import Flask, render_template, url_for, request, redirect,flash,session
 from dbcon import PostgresManagement
+from src.forms import VariousForms
 
 app = Flask(__name__)
 app.secret_key = 'grimmteshco'
 postgres = PostgresManagement()
+forms = VariousForms()
 
 @app.route('/')
 def index():
@@ -51,6 +53,41 @@ def cashier():
 def transactions():
     transaction = postgres.findTransactions()
     return render_template('pages/transactions.html', transaction=transaction)
+@app.route('/new_person', methods=['GET','POST'])
+def new_person():
+    if request.method == 'POST' and len(request.form) >0:
+        forms.addNewPerson(request)
+        return redirect(url_for('people'))
+    return render_template('forms/new_person.html')
+
+@app.route('/new_doctor', methods=['GET','POST'])
+def new_doctor():
+    person = postgres.findDoctors()
+    if request.method == 'POST' and len(request.form) >0:
+        forms.addNewDoctor(request)
+        return redirect(url_for('doctors'))
+    return render_template('forms/new_doctor.html', person=person)
+
+@app.route('/new_nurse', methods=['GET','POST'])
+def new_nurse():
+    person = postgres.findNurse()
+    if request.method == 'POST' and len(request.form) >0:
+        forms.addNewNurse(request)
+        return redirect(url_for('nurse'))
+    return render_template('forms/new_nurse.html', person=person)
+
+@app.route('/new_cashier', methods=['GET','POST'])
+def new_cashier():
+    person = postgres.findNurse()
+    if request.method == 'POST' and len(request.form) >0:
+        forms.addNewNurse(request)
+        return redirect(url_for('cashier'))
+    return render_template('forms/new_cashier.html', person=person)
+
+@app.route('/testSelect')
+def tesSelect():
+    person = postgres.findDoctors()
+    return render_template('forms/new_doctor.html', person=person)
 
 
 

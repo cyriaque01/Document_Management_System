@@ -1,0 +1,17 @@
+{%extends "layout.html"%} {%block content%}
+<form method="POST">
+
+    {% include 'includes/_input_select.html'%}
+    <div class="form-group">
+
+        <label for="hoursstart">Shift Start:</label>
+        <input type="datetime-local" id="hoursstart" name="hoursstart">
+        <label for="hoursend">Shift Start:</label>
+        <input type="datetime-local" id="hoursend" name="hoursend">
+
+    </div>
+    <p><input type=submit value=Add>
+</form>
+
+
+{%endblock content%}
