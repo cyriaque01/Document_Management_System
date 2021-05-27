@@ -48,11 +48,11 @@ def cashier():
     person = postgres.findCashier()
     return render_template('pages/cashier.html', person=person)
 
-
 @app.route('/transactions')
 def transactions():
     transaction = postgres.findTransactions()
     return render_template('pages/transactions.html', transaction=transaction)
+
 @app.route('/new_person', methods=['GET','POST'])
 def new_person():
     if request.method == 'POST' and len(request.form) >0:
@@ -60,9 +60,10 @@ def new_person():
         return redirect(url_for('people'))
     return render_template('forms/new_person.html')
 
+
 @app.route('/new_doctor', methods=['GET','POST'])
 def new_doctor():
-    person = postgres.findDoctors()
+    person = postgres.findUsers()
     if request.method == 'POST' and len(request.form) >0:
         forms.addNewDoctor(request)
         return redirect(url_for('doctors'))
@@ -70,7 +71,7 @@ def new_doctor():
 
 @app.route('/new_nurse', methods=['GET','POST'])
 def new_nurse():
-    person = postgres.findNurse()
+    person = postgres.findUsers()
     if request.method == 'POST' and len(request.form) >0:
         forms.addNewNurse(request)
         return redirect(url_for('nurse'))
@@ -78,15 +79,50 @@ def new_nurse():
 
 @app.route('/new_cashier', methods=['GET','POST'])
 def new_cashier():
-    person = postgres.findNurse()
+    person = postgres.findUsers()
     if request.method == 'POST' and len(request.form) >0:
-        forms.addNewNurse(request)
+        forms.addNewCashier(request)
         return redirect(url_for('cashier'))
     return render_template('forms/new_cashier.html', person=person)
 
+@app.route('/new_patient', methods=['GET','POST'])
+def new_patient():
+    person = postgres.findUsers()
+    if request.method == 'POST' and len(request.form) >0:
+        forms.addNewPatient(request)
+        return redirect(url_for('patients'))
+    return render_template('forms/new_patient.html', person=person)
+
+@app.route('/new_pharmacy', methods=['GET','POST'])
+def new_pharmacy():
+    if request.method == 'POST' and len(request.form) >0:
+        forms.addNewPharmacy(request)
+        return redirect(url_for('pharmacy'))
+    return render_template('forms/new_pharmacy.html')
+
+
+
+@app.route('/new_transaction', methods=['GET','POST'])
+def new_transaction():
+    person = postgres.findUsers()
+    cashier = postgres.findCashier()
+    pharmacy = postgres.findPharmacy()
+    if request.method == 'POST' and len(request.form) >0:
+        forms.addNewTransaction(request)
+        return redirect(url_for('transactions'))
+    return render_template('forms/new_transaction.html', person=person, cashier=cashier, pharmacy=pharmacy)
+
+
+
+
+
+
+
+
+
 @app.route('/testSelect')
 def tesSelect():
-    person = postgres.findDoctors()
+    person = postgres.findUsers()
     return render_template('forms/new_doctor.html', person=person)
 
 

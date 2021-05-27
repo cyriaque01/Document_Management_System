@@ -1,6 +1,7 @@
 from credential__sql import PGPASSWORD
 from flask.globals import request
 from dbcon import PostgresManagement
+from datetime import datetime
 
 postgres = PostgresManagement()
 
@@ -56,20 +57,39 @@ class VariousForms():
     def addNewCashier(self,request):
         postgres.addCashier(self.newCashier(request))    
 
+    def newPatient(self,request):
+        id_person = request.form['person']
+        date = request.form['checkin']
+        room = request.form['roomnumber']
+        checkout = request.form['checkout']
+        diagnosis = request.form['diagnosis']
 
-"""
-def newPerson(self,request):
-        p = dict();
-        p['name'] = request.form['fname']+' '+request.form['lname']
-        p['type'] = request.form['type']
-        p['phone'] = request.form['phone']
-        p['pobox'] = request.form['pobox']
-        p['addresse'] = request.form['adresse']
-        p['email'] = request.form['email']
+        return id_person, date, room, checkout,diagnosis
 
-        return p
+    def addNewPatient(self,request):
+        postgres.addPatient(self.newPatient(request))    
 
-    def addNewPerson(self,request):
-        person = self.newPerson(request)
-        postgres.addPerson(person)
-    """
+    def newPharmacy(self,request):
+        name = request.form['name']
+        price = request.form['price']
+        stock = request.form['stock']
+
+        return  name, price, stock
+
+    def addNewPharmacy(self,request):
+        postgres.addPharmacy(self.newPharmacy(request))  
+
+    def newTransaction(self,request):
+        id_cashier = request.form['cashier']
+        id_product = request.form['product']
+        id_person = request.form['person']
+        amount = request.form['amount']
+        date = datetime.now()
+        date = date.strftime("%d-%b-%Y (%H:%M:%S.%f)")
+        total = postgres.getProductPrice(id_product)*float(amount) 
+       
+
+        return id_cashier, id_product, id_person, amount, date, total
+
+    def addNewTransaction(self,request):
+        postgres.addTransaction(self.newTransaction(request))  
