@@ -158,6 +158,11 @@ class PostgresManagement:
         except:
             self.connection.rollback()
             print('error')
+        
+    def getCredentials(self,username,password):
+        sql_command = 'select * from login where username = {} and password = {};'.format(username,password)
+        data = pd.read_sql(sql_command, self.connection)
+        return (data)
 
 
         
@@ -167,5 +172,5 @@ class PostgresManagement:
 if __name__ == "__main__":
     postgresDB = PostgresManagement()
     #t,w,m,y = postgresDB.findSpecDate()
-    person = postgresDB.findTransactions()
-    print(person.pro)
+    person = postgresDB.getCredentials('me','me')
+    print(person)
