@@ -97,7 +97,7 @@ def new_patient():
 def new_pharmacy():
     if request.method == 'POST' and len(request.form) >0:
         forms.addNewPharmacy(request)
-        return redirect(url_for('pharmacy'))
+        return redirect(url_for('new_pharmacy'))
     return render_template('forms/new_pharmacy.html')
 
 
