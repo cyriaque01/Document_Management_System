@@ -60,6 +60,7 @@ def nurse():
 @app.route('/pharmacy')
 def pharmacies():
     pharmacy = postgres.findPharmacy()
+    print(request.path)
     return render_template('pages/pharmacy.html', pharmacy=pharmacy)
 
 
