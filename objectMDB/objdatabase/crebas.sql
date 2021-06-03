@@ -1,8 +1,7 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 8                                  */
-/* Date de cr�ation :  05/21/21 7:09:33 PM                      */
+/* Date de cr�ation :  05/27/21 7:53:32 AM                      */
 /*==============================================================*/
-
 
 
 
@@ -15,8 +14,8 @@ create table CASHIER (
    ID_PERSON            INT4                 not null
       constraint CKC_ID_PERSON_CASHIER check (ID_PERSON >= 0),
    PASSWORD             VARCHAR(1024)        not null,
-   HOURSSTART           TIMESTAMP WITH TIME ZONE null,
-   HOURSEND             TIMESTAMP WITH TIME ZONE null,
+   HOURSSTART           DATE                 null,
+   HOURSEND             DATE                 null,
    constraint PK_CASHIER primary key (ID_CASHIER)
 );
 
@@ -40,14 +39,14 @@ ID_PERSON
 create table CASHREGISTER (
    ID_TRANSACTION       SERIAL               not null
       constraint CKC_ID_TRANSACTION_CASHREGI check (ID_TRANSACTION >= 0),
-   ID_PRODUCT           INT4                 not null
-      constraint CKC_ID_PRODUCT_CASHREGI check (ID_PRODUCT >= 0),
    ID_CASHIER           INT4                 not null
       constraint CKC_ID_CASHIER_CASHREGI check (ID_CASHIER >= 0),
+   ID_PRODUCT           INT4                 not null
+      constraint CKC_ID_PRODUCT_CASHREGI check (ID_PRODUCT >= 0),
    ID_PERSON            INT4                 not null
       constraint CKC_ID_PERSON_CASHREGI check (ID_PERSON >= 0),
    AMOUNT               DECIMAL(8)           null,
-   DATE                 TIMESTAMP WITH TIME ZONE null,
+   DATE                 DATE                 null,
    TOTAL                DECIMAL              null,
    constraint PK_CASHREGISTER primary key (ID_TRANSACTION)
 );
@@ -89,8 +88,8 @@ create table DOCTOR (
    ID_PERSON            INT4                 not null
       constraint CKC_ID_PERSON_DOCTOR check (ID_PERSON >= 0),
    SPECIALITY           VARCHAR(1024)        null,
-   HOURSSTART           TIMESTAMP WITH TIME ZONE null,
-   HOURSEND             TIMESTAMP WITH TIME ZONE null,
+   HOURSSTART           DATE                 null,
+   HOURSEND             DATE                 null,
    constraint PK_DOCTOR primary key (ID_DOCTOR)
 );
 
@@ -143,8 +142,8 @@ create table NURSE (
       constraint CKC_ID_NURSE_NURSE check (ID_NURSE >= 0),
    ID_PERSON            INT4                 not null
       constraint CKC_ID_PERSON_NURSE check (ID_PERSON >= 0),
-   HOURSSTART           TIMESTAMP WITH TIME ZONE null,
-   HOURSEND             TIMESTAMP WITH TIME ZONE null,
+   HOURSSTART           DATE                 null,
+   HOURSEND             DATE                 null,
    constraint PK_NURSE primary key (ID_NURSE)
 );
 
@@ -170,9 +169,9 @@ create table PATIENT (
       constraint CKC_ID_PATIENT_PATIENT check (ID_PATIENT >= 0),
    ID_PERSON            INT4                 not null
       constraint CKC_ID_PERSON_PATIENT check (ID_PERSON >= 0),
-   DATE                 TIMESTAMP WITH TIME ZONE null,
+   DATE                 DATE                 null,
    ROOMNUMBER           INT4                 null,
-   CHECKOUT             TIME WITH TIME ZONE  null,
+   CHECKOUT             DATE                 null,
    DIAGNOSIS            VARCHAR(1024)        null,
    constraint PK_PATIENT primary key (ID_PATIENT)
 );
@@ -201,7 +200,7 @@ create table PATIENTBOOK (
       constraint CKC_ID_PATIENT_PATIENTB check (ID_PATIENT >= 0),
    DEPARTEMENT          VARCHAR(1024)        null,
    DESCRIPTION          VARCHAR(8000)        null,
-   DATE                 TIMESTAMP WITH TIME ZONE null,
+   DATE                 DATE                 null,
    RESULTATS            VARCHAR(8000)        null,
    constraint PK_PATIENTBOOK primary key (ID_PATIENTBOOK)
 );
