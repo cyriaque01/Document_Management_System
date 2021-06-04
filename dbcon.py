@@ -5,9 +5,35 @@ import pandas as pd
 from werkzeug.utils import find_modules
 import credential__sql as creds
 import pandas.io.sql as psql
-from datetime import datetime
 
 ## ****** LOAD PSQL DATABASE ***** ##
+
+'''
+# Set up a connection to the postgres server.
+conn_string = "host="+ creds.PGHOST +" port="+ "5432" +" dbname="+ creds.PGDATABASE +" user=" + creds.PGUSER \
++" password="+ creds.PGPASSWORD
+conn=psycopg2.connect(conn_string)
+print("Connected!")
+
+# Create a cursor object
+cursor = conn.cursor()
+
+
+def load_data(schema, table):
+
+    sql_command = "SELECT * FROM {}.{};".format(str(schema), str(table))
+    print (sql_command)
+
+    # Load the data
+    data = pd.read_sql(sql_command, conn)
+
+    print(data.shape)
+    return (data)
+
+
+#data = load_data('public','person')
+#print(data)
+'''
 class PostgresManagement:
     def __init__(self):
         # Set up a connection to the postgres server.
@@ -15,7 +41,7 @@ class PostgresManagement:
             +" password="+ creds.PGPASSWORD
         conn=psycopg2.connect(conn_string)
         self.connection = conn
-        self.cursor = conn.cursor()
+        #self.cursor = conn.cursor()
         self.schema = 'public'
     
     def findUsers(self):
@@ -57,19 +83,13 @@ class PostgresManagement:
         return (data)
     
     def findTransactions(self):
-        sql_command = "select c.id_product,c.id_cashier,c.id_person,amount,date,total,p.name,p.surname, ph.name as pro, ph.price from cashregister as c inner join person as p on c.id_person = p.id_person inner join pharmacy as ph on c.id_product = ph.id_product;"
+        sql_command = "select c.id_product,c.id_cashier,c.id_person,amount,date,p.name,p.surname, ph.name as product,ph.price from cashregister as c inner join person as p on c.id_person = p.id_person inner join pharmacy as ph on c.id_product = ph.id_product;"
         data = pd.read_sql(sql_command, self.connection)
         return (data)
     def findAllTransactions(self):
         sql_command = "select * from cashregister;"
         data = pd.read_sql(sql_command, self.connection)
         return (data)
-
-    def getProductPrice(self,id_product):
-        sql_command = "select price from pharmacy where id_product = {};".format(id_product)
-        data = pd.read_sql(sql_command, self.connection)
-        return (data.price[0])
-
     def findSpecDate(self):
         sql_command = "select sum(total) as total from cashregister where date < (current_timestamp) and date > (current_timestamp -interval '1 day') "
         today = pd.read_sql(sql_command, self.connection)
@@ -81,96 +101,9 @@ class PostgresManagement:
         year = pd.read_sql(sql_command, self.connection)
         return (today,week,month,year)
 
-    def addPerson(self, person):
-        sql_command = 'insert into person (name,surname,type,phone,pobox,email,home) values {}'.format(person)
-        print(sql_command) 
-        try:
-            self.cursor.execute(sql_command)
-            self.connection.commit()
-            print('inserted')
-        except:
-            self.connection.rollback()
-            print('error')
-    
-    def addDoctor(self,doctor):
-        sql_command = 'insert into doctor (id_person,speciality,hoursstart,hoursend) values {}'.format(doctor)
-        print(sql_command)
-        try:
-            self.cursor.execute(sql_command)
-            self.connection.commit()
-            print('inserted')
-        except:
-            self.connection.rollback()
-            print('error')
-
-    def addNurse(self,nurse):
-        sql_command = 'insert into nurse (id_person,hoursstart,hoursend) values {}'.format(nurse)
-        print(sql_command)
-        try:
-            self.cursor.execute(sql_command)
-            self.connection.commit()
-            print('inserted')
-        except:
-            self.connection.rollback()
-            print('error')
-
-    
-    def addCashier(self,cashier):
-        sql_command = 'insert into cashier (id_person,password,hoursstart,hoursend) values {}'.format(cashier)
-        print(sql_command)
-        try:
-            self.cursor.execute(sql_command)
-            self.connection.commit()
-            print('inserted')
-        except:
-            self.connection.rollback()
-            print('error')
-
-    def addPatient(self,patient):
-        sql_command = 'insert into patient (id_person,date,roomnumber,checkout,diagnosis) values {}'.format(patient)
-        print(sql_command)
-        try:
-            self.cursor.execute(sql_command)
-            self.connection.commit()
-            print('inserted')
-        except:
-            self.connection.rollback()
-            print('error')
-    
-    def addPharmacy(self,pharmacy):
-        sql_command = 'insert into pharmacy (name,price,stock) values {}'.format(pharmacy)
-        print(sql_command)
-        try:
-            self.cursor.execute(sql_command)
-            self.connection.commit()
-            print('inserted')
-        except:
-            self.connection.rollback()
-            print('error')
-
-    def addTransaction(self,transaction):
-        sql_command = 'insert into cashregister (id_cashier, id_product, id_person, amount, date, total) values {}'.format(transaction)
-        print(sql_command)
-        try:
-            self.cursor.execute(sql_command)
-            self.connection.commit()
-            print('inserted')
-        except:
-            self.connection.rollback()
-            print('error')
-        
-    def getCredentials(self,username,password):
-        sql_command = 'select * from login where username = {} and password = {};'.format(username,password)
-        data = pd.read_sql(sql_command, self.connection)
-        return (data)
-
-
-        
-        
-
 
 if __name__ == "__main__":
     postgresDB = PostgresManagement()
-    #t,w,m,y = postgresDB.findSpecDate()
-    person = postgresDB.getCredentials('me','me')
-    print(person)
+    t,w,m,y = postgresDB.findSpecDate()
+    #person = postgresDB.findUsers()
+    print(y.total)

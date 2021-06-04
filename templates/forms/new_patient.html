@@ -1,22 +1,3 @@
-{%extends "layout.html"%} {%block content%}
-<form method="POST">
-
-    {% include 'includes/_input_select.html'%}
-    <div class="form-group">
-
-        <label for="checkin">Check in:</label>
-        <input type="datetime-local" id="checkin" name="checkin"><br>
-        <label for="roomnumber">Room Number:</label>
-        <input type="number" class="form-control" id="roomnumber" name="roomnumber"><br>
-        <label for="checkout">Check out:</label>
-        <input type="datetime-local" id="checkout" name="checkout"><br>
-        <label for="diagnosis">Diagnosis:</label>
-        <textarea id="diagnosis" name="diagnosis" rows="4" cols="50"></textarea><br>
-
-
-    </div>
-    <p><input type=submit value=Add class="btn_1">
-</form>
-
-
-{%endblock content%}
+<div id="addpatient">
+    I am a new patient
+</div>

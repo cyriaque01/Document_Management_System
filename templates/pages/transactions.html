@@ -1,10 +1,5 @@
 {%extends "layout.html"%} {%block content%}
 {%include 'pages/page_layout.html'%}
-<div class="add_button ml-10">
-    <a href="new_transaction" data-target="new_transaction" class="btn_1">Add New</a>
-</div>
-</div>
-</div>
 <!--/ menu  -->
 <div class="QA_table ">
     <!-- table-responsive -->
@@ -16,7 +11,6 @@
                 <th scope="col">Product Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">Total</th>
                 <th scope="col">Date</th>
             </tr>
         </thead>
@@ -29,10 +23,9 @@
                     </div>
                 </td>
                 <td>{{transaction.id_cashier[j]}}</td>
-                <td>{{transaction.pro[j]}}</td>
+                <td>{{transaction.product[j]}}</td>
                 <td>{{transaction.price[j]}}</td>
                 <td>{{transaction.amount[j]}}</td>
-                <td>{{transaction.total[j]}}</td>
                 <td>
                     <div class="amoutn_action d-flex align-items-center">
                         <a href="#" class="status_btn">{{transaction.date[j]}}</a>

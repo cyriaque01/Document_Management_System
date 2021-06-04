@@ -205,4 +205,4 @@
     ,
     v
 });
-
+//# sourceMappingURL=metisMenu.min.js.map
