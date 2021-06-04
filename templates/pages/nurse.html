@@ -1,5 +1,10 @@
 {%extends "layout.html"%} {%block content%}
 {%include 'pages/page_layout.html'%}
+<div class="add_button ml-10">
+    <a href="new_nurse" data-target="nurse" class="btn_1">Add New</a>
+</div>
+</div>
+</div>
 <!--/ menu  -->
 <div class="QA_table ">
     <!-- table-responsive -->
@@ -20,6 +25,9 @@
             <tr>
                 <td>
                     <div class="patient_thumb d-flex align-items-center">
+                        <div class="student_list_img mr_20">
+                            <img src="{{ url_for('static', filename='images/pataint.png')}}" alt="" srcset="">
+                        </div>
                         {{person.name[j]}} {{person.surname[j]}}
                     </div>
                 </td>

@@ -1,11 +1,11 @@
 {%extends "layout.html"%} {%block content%}
 <form method="POST">
 
-    
+    {% include 'includes/_input_select.html'%}
     <div class="form-group">
-        {% include 'includes/_input_select.html'%}
-        <label for="speciality">Speciality:</label><br>
-        <input type="text" class="form-control" id="speciality" name="speciality"><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" class="form-control" id="password" name="password"><br>
         <label for="hoursstart">Shift Start:</label>
         <input type="datetime-local" id="hoursstart" name="hoursstart">
         <label for="hoursend">Shift Start:</label>
